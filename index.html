@@ -60,22 +60,27 @@ $(function(){
           var str=$(".yt").val();
           //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
           //下面的代码中应用了转义字符"\"输出一个字符"/"
-          var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+          var Expression=/http(s)?:\/\/www(\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+		  var Expression2=/http(s)?:\/\/youtu(\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
           var objExp=new RegExp(Expression);
-         
+
+		  
           if(objExp.test(str) != true){
-         
-           alert("youtube网址格式不正确！请重新输入");
-           return false;
+			objExp=new RegExp(Expression2);
+				if(objExp.test(str) != true){
+				   alert("youtube网址格式不正确！请重新输入");
+				   return false;
+				}else{
+			      str = str.substring(str.lastIndexOf("/"),str.length);
+				  str = str.replace("?","&");
+				  str = str.replace("/","?v=");
+				  $(".yturl").html("<a href=https://www.20200403.xyz/yt/" +  str + " target=_blank>https://www.20200403.xyz/yt/" + str +"</a>");				  
+				}	
+            return false;
           } else {
               //alert("网址正确！");
-              str = str.substring(str.indexOf("v"),str.length);
-              //alert(str)
-			    if (str !== null || str !== undefined || str !== '') { 
-			      str = str.substring(str.lastIndexOf("/"),str.length);
-				  str = str.replace("/","v=")
-			    }
-              $(".yturl").html("<a href=https://www.20200403.xyz/yt/?" +  str + " target=_blank>https://www.20200403.xyz/yt/?" + str +"</a>");
+              str = str.substring(str.indexOf("?"),str.length);
+              $(".yturl").html("<a href=https://www.20200403.xyz/yt/" +  str + " target=_blank>https://www.20200403.xyz/yt/" + str +"</a>");
             }
          
          }
