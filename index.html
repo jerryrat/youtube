@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Youtube地址转换器</title>
+    <style>
+        .container {
+            width: 60%;
+            margin: 10% auto 0;
+            background-color: #f0f0f0;
+            padding: 2% 5%;
+            border-radius: 10px
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+            ul li {
+                line-height: 2.3
+            }
+
+        a {
+            color: #20a53a
+        }
+        .yt{
+            height: 50px;
+            width: 80%;
+            font-size:30px;
+            color: #333;
+            border: 2px solid #0066FF;
+        }
+        .yturl{
+            color: #f60;
+            font-size: 30px;
+        }
+        
+    </style>
+      <script src="js/jquery-1.9.1.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>复制视频地址到下面输入框中</h1>
+        <h3>本页面由系统自动生成</h3>
+        <input class="yt" type="text" placeholder="https://www.youtube.com/watch?v=auS5bcqfd-Q" required="required">
+        <h3>720p视频地址如下,复制即可。如需下载视频请点击后右击另存</h3>
+        <h3 class="yturl"></h3></div>
+        
+<script type="text/javascript">
+ 
+/**
+ * 前台页面验证url网址输入是否正确
+ */
+$(function(){
+
+    $(".yt").change(function(){
+ 
+         //验证url网址
+         if($(".yt").val()) {
+          var str=$(".yt").val();
+          //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+          //下面的代码中应用了转义字符"\"输出一个字符"/"
+          var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+          var objExp=new RegExp(Expression);
+         
+          if(objExp.test(str) != true){
+         
+           alert("youtube网址格式不正确！请重新输入");
+           return false;
+          } else {
+              //alert("网址正确！");
+              str = str.substring(str.indexOf("?"),str.length);
+              //alert(str)
+              $(".yturl").html("<a href=https://www.20200403.xyz/yt/" + str + " target=_blank>"+ "https://www.20200403.xyz/yt/" + str +"</a>");
+            }
+         
+         }
+ 
+   })
+ 
+})
+ 
+</script>
+</body>
+
+</html>
