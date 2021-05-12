@@ -69,13 +69,13 @@ $(function(){
            return false;
           } else {
               //alert("网址正确！");
-              str = str.substring(str.indexOf("?"),str.length);
+              str = str.substring(str.indexOf("v"),str.length);
               //alert(str)
 			    if (str !== null || str !== undefined || str !== '') { 
 			      str = str.substring(str.lastIndexOf("/"),str.length);
-				  str = str.replace("/","?v=")
+				  str = str.replace("/","v=")
 			    }
-              $(".yturl").html("<a href=https://www.20200403.xyz/yt/" +  str + " target=_blank>https://www.20200403.xyz/yt/" + str +"</a>");
+              $(".yturl").html("<a href=https://www.20200403.xyz/yt/?" +  str + " target=_blank>https://www.20200403.xyz/yt/?" + str +"</a>");
             }
          
          }
